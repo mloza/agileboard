@@ -1,0 +1,20 @@
+.taskBoard td {
+    width: 16%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+.tasks {
+    min-height: 100px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.tasks li {
+    padding: 10px;
+    margin: 10px;
+    color: #000;
+    background: #ee5f5b;
+    box-shadow: 3px 3px 5px #ccc;
+}

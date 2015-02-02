@@ -1,0 +1,37 @@
+<div>
+    <div class="clear"></div>
+    <div style="overflow: hidden;">
+        <p>
+            This table is showing probability of this game is for you.
+        </p>
+
+        <table style="float: left; width: 30%; clear: none;">
+            <tr>
+                <th>Game</th>
+                <th>Probability</th>
+            </tr>
+            <tr ng-repeat="(game, score) in results">
+                <td>[[ game ]]</td>
+                <td style="text-align: right; padding: 5px;">[[ score*100 | number: 2]]%</td>
+            </tr>
+        </table>
+
+        <canvas id="myChart" width="450" height="400" style="float: right; clear: none; width: 70%;"></canvas>
+    </div>
+    <p>
+        <label>Check other nodes:</label>
+        <select ng-change="update()" ng-model="chart">
+            <option value="Finisz">Results</option>
+            <option value="Koszty">Costs</option>
+            <option value="Czasy">Timeline</option>
+            <option value="Typ">Type</option>
+            <option value="Gracz">Player</option>
+            <option value="Wymagania_techniczne">Requirements</option>
+            <option value="Rozw_j_postaci">Character development</option>
+            <option value="Sterowanie">Controls</option>
+        </select>
+    </p>
+    <p style="text-align:right;">
+        <button type="button" data-ng-click="goToQuestions()">Prev</button>
+    </p>
+</div>

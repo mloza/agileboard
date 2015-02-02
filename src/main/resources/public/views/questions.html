@@ -1,0 +1,33 @@
+<div>
+    <p>
+        <label><span class="big">Question</span></label>
+        <span class="big">[[ questions[state.currentQuestion].question ]]</span>
+    </p>
+
+    <p>
+        <label for="pass"><span class="big">Answers</span><br>
+            <small>Choose one</small>
+        </label>
+    </p>
+
+    <p ng-repeat="(key, val) in questions[state.currentQuestion].answers">
+        <input type="radio" name="index" id="[[ key ]]" value="[[ key ]]" class="switch" ng-model="questions[state.currentQuestion].answer" data-ng-click="setAnsw()"> &nbsp;
+        <label for="[[ key ]]" class="inline grey">[[ val ]]</label>
+    </p>
+
+
+    <p style="text-align:right;">
+        <button type="button" ng-hide="state.currentQuestion > 0"
+                ng-click="state.go('/')">Prev
+        </button>
+        <button type="button" ng-show="state.currentQuestion > 0"
+                ng-click="prevQuestion()">Prev
+        </button>
+        <button type="button" ng-show="state.currentQuestion < questions.length-1"
+                ng-click="nextQuestion()">Next
+        </button>
+        <button type="button" ng-hide="state.currentQuestion < questions.length-1"
+                ng-click="state.go('/results')">Results
+        </button>
+    </p>
+</div>
