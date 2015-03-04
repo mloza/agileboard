@@ -33,6 +33,9 @@ app.service("stomp", ["$q", "$rootScope", function ($q, $rootScope) {
         };
         client.subscribe("/app/stories", handleStories);
         client.subscribe("/topic/stories", handleStories);
+    }, function(error) {
+        alert("Error: "+error);
+        document.location.href = "/";
     });
 
     return {
@@ -108,8 +111,12 @@ app.controller("mainController", ["$scope", "$location", "stomp", function ($sco
         var task = findTaskById(item.attr('data-story-id'), item.attr('data-task-id'));
         task.state = $(event.target).attr('data-state');
 
-        stomp.saveTask(task, function () {
-        });
+        stomp.saveTask(task, function () {});
+    };
+
+    $scope.closeStory = function(story) {
+        story.state = "CLOSED";
+        stomp.saveStory(story);
     }
 }]);
 

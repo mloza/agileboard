@@ -20,7 +20,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 @ComponentScan(basePackageClasses = {AppConfig.class, Main.class})
 @EnableGlobalMethodSecurity()
 @EnableJpaRepositories(basePackageClasses = StoryRepository.class)
-@Import(RepositoryRestMvcConfiguration.class)
+//@Import(RepositoryRestMvcConfiguration.class)
 @Configuration
 public class Start {
     public static void main(String[] args) {

@@ -24,5 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("michal").password("kigybamo").roles("USER", "ADMIN");
         authenticationManagerBuilderInMemoryUserDetailsManagerConfigurer
                 .withUser("mateusz").password("poke000").roles("USER");
+        authenticationManagerBuilderInMemoryUserDetailsManagerConfigurer
+                .withUser("norman").password("paperStick9000").roles("USER");
     }
 }

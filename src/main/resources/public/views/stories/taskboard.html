@@ -20,6 +20,7 @@
                     [[ story.name ]]
                     <a href="#/tasks/add/[[story.id]]">Add task</a>
                     <a href="#/story/edit/[[story.id]]">Edit story</a>
+                    <a ng-click="closeStory(story)">Close story</a>
                 </td>
                 <td data-ng-repeat="state in data.states">
                     <ul ui-sortable="{connectWith: '.tasks_'+story.id, receive: receiveFn}" class="tasks tasks_[[story.id]]" data-state="[[ state ]]" data-ng-model="story[state]">

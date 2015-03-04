@@ -31,13 +31,13 @@ public class WsController {
 
     @SubscribeMapping("/stories")
     public Iterable<Story> getAllStories() {
-        return stories.findAll();
+        return stories.findNotInState(State.CLOSED);
     }
 
     @MessageMapping("/task/update")
     public void updateTask(Task task) {
         taskRepository.save(task);
-        messagingTemplate.convertAndSend("/topic/stories", stories.findAll());
+        messagingTemplate.convertAndSend("/topic/stories", stories.findNotInState(State.CLOSED));
     }
 
     @MessageMapping("/story/update")
@@ -47,7 +47,7 @@ public class WsController {
         }
 
         stories.save(story);
-        messagingTemplate.convertAndSend("/topic/stories", stories.findAll());
+        messagingTemplate.convertAndSend("/topic/stories", stories.findNotInState(State.CLOSED));
     }
 
     @MessageMapping("/pos")
