@@ -1,5 +1,23 @@
 var app = angular.module("agileBoard", ["ngRoute", "ui.sortable"]);
 
+var appVariables = {
+    showClosed: false,
+    stories: [],
+    states: ['BACKLOG', 'IN_DEVELOPMENT', 'SELECTED', 'BLOCKED', 'CLOSED'],
+};
+
+app.filter("stories", function() {
+    return function(story) {
+        var filtered = [];
+        angular.forEach(story, function(story) {
+            if(appVariables.showClosed || story.state != 'CLOSED') {
+                filtered.push(story);                
+            }
+        });
+        return filtered;
+    }
+});
+
 app.service("stomp", ["$q", "$rootScope", function ($q, $rootScope) {
     var socket = new SockJS('/agilews');
     var client = Stomp.over(socket);
@@ -77,11 +95,6 @@ app.config(function ($interpolateProvider, $routeProvider) {
     $interpolateProvider.startSymbol('[[');
     $interpolateProvider.endSymbol(']]');
 });
-
-var appVariables = {
-    stories: {},
-    states: ['BACKLOG', 'IN_DEVELOPMENT', 'SELECTED', 'BLOCKED', 'CLOSED']
-};
 
 function findStoryById(storyId) {
     for (i in appVariables.stories) {

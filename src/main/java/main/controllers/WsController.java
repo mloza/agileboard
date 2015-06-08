@@ -31,7 +31,7 @@ public class WsController {
 
     @SubscribeMapping("/stories")
     public Iterable<Story> getAllStories() {
-        return stories.findNotInState(State.CLOSED);
+        return stories.findAll();
     }
 
     @MessageMapping("/task/update")
