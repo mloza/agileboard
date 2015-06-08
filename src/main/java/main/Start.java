@@ -3,6 +3,7 @@ package main;
 import main.configuration.AppConfig;
 import main.controllers.Main;
 import main.repositories.StoryRepository;
+import main.security.DatabaseAuthenticationProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,7 +18,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
  * 2015-01-23.
  */
 @EnableAutoConfiguration
-@ComponentScan(basePackageClasses = {AppConfig.class, Main.class})
+@ComponentScan(basePackageClasses = {AppConfig.class, Main.class, DatabaseAuthenticationProvider.class})
 @EnableGlobalMethodSecurity()
 @EnableJpaRepositories(basePackageClasses = StoryRepository.class)
 //@Import(RepositoryRestMvcConfiguration.class)
