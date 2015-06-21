@@ -18,3 +18,6 @@
     background: #ee5f5b;
     box-shadow: 3px 3px 5px #ccc;
 }
+
+.taskBoard td { position: relative; }
+.taskBoard .story-state { position: absolute; right: 5px; top: 0px; font-weight: bold; }

@@ -26,10 +26,11 @@
             </tr>
             <tr data-ng-repeat="story in data.stories | stories">
                 <td>
+                    <div class="story-state">[[ story.state ]]</div>
                     [[ story.name ]]
                     <a href="#/tasks/add/[[story.id]]">Add task</a>
                     <a href="#/story/edit/[[story.id]]">Edit story</a>
-                    <a ng-click="closeStory(story)">Close story</a>
+                    <a ng-click="closeStory(story)" ng-hide="story.state == 'CLOSED'">Close story</a>
                 </td>
                 <td data-ng-repeat="state in data.states">
                     <ul ui-sortable="{connectWith: '.tasks_'+story.id, receive: receiveFn}"
